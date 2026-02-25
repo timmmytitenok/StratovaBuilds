@@ -1340,17 +1340,11 @@ export default function Home() {
         <section id="cta" className="relative overflow-hidden scroll-mt-28 py-28 md:py-32">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[38rem] w-[70rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-85 blur-2xl"
+            className="pointer-events-none absolute inset-[-22%] opacity-65"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(139,92,246,0.34) 0%, rgba(139,92,246,0.2) 30%, rgba(139,92,246,0.1) 52%, rgba(139,92,246,0.04) 68%, rgba(7,7,11,0) 100%)",
-            }}
-          />
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[26rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-xl"
-            style={{
-              background: "radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0) 100%)",
+                "radial-gradient(56% 44% at 50% 49%, rgba(139,92,246,0.18) 0%, rgba(139,92,246,0.11) 32%, rgba(139,92,246,0.05) 54%, rgba(139,92,246,0.02) 68%, rgba(7,7,11,0) 84%), radial-gradient(40% 30% at 50% 49%, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 34%, rgba(255,255,255,0.015) 52%, rgba(255,255,255,0) 72%)",
+              filter: "blur(28px)",
             }}
           />
           <motion.div
