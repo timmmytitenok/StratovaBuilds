@@ -34,10 +34,10 @@ export async function POST(request: Request) {
 
     const resend = new Resend(resendApiKey);
     const toEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim() || "timothytitenokspam@gmail.com";
-    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim() || "onboarding@resend.dev";
+    const defaultFromEmail = "onboarding@resend.dev";
+    const configuredFromEmail = process.env.RESEND_FROM_EMAIL?.trim() || defaultFromEmail;
 
-    const { error } = await resend.emails.send({
-      from: fromEmail,
+    const baseEmailPayload = {
       to: [toEmail],
       subject: `New Stratova call request: ${fullName}`,
       replyTo: email,
@@ -59,7 +59,26 @@ export async function POST(request: Request) {
         <p><strong>Revenue stream:</strong> ${revenueStream}</p>
         <p><strong>Message:</strong> ${message || "N/A"}</p>
       `,
+    };
+
+    let { error } = await resend.emails.send({
+      from: configuredFromEmail,
+      ...baseEmailPayload,
     });
+
+    const domainVerificationError =
+      typeof error?.message === "string" &&
+      /domain is not verified|verify your domain/i.test(error.message);
+
+    // If a custom sender domain is unverified, retry with Resend's default sender.
+    if (error && domainVerificationError && configuredFromEmail !== defaultFromEmail) {
+      const retryResult = await resend.emails.send({
+        from: defaultFromEmail,
+        ...baseEmailPayload,
+      });
+      error = retryResult.error;
+    }
+
     if (error) {
       const resendErrorMessage = typeof error.message === "string" && error.message.length > 0 ? error.message : "Unable to send email.";
       return NextResponse.json({ error: `Resend error: ${resendErrorMessage}` }, { status: 502 });
