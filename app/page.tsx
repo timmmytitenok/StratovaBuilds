@@ -433,7 +433,7 @@ export default function Home() {
     ? undefined
     : {
         hidden: { opacity: 0, y: 18 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
       };
   const sectionStagger = reduceMotion
     ? undefined
@@ -449,7 +449,7 @@ export default function Home() {
     ? undefined
     : {
         hidden: { opacity: 0.15, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+        show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" as const } },
       };
 
   useEffect(() => {
