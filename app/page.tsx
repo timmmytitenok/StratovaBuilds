@@ -744,8 +744,8 @@ export default function Home() {
                   BEFORE
                 </span>
                 <motion.div
-                  initial={reduceMotion ? undefined : { filter: "blur(16px)" }}
-                  whileInView={reduceMotion ? undefined : { filter: "blur(0px)" }}
+                  initial={reduceMotion ? undefined : { opacity: 0.2, filter: "blur(16px)" }}
+                  whileInView={reduceMotion ? undefined : { opacity: 1, filter: "blur(0px)" }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.38, ease: "easeOut" }}
                   className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-dashed border-white/20 bg-white/[0.03]"
@@ -774,8 +774,8 @@ export default function Home() {
                   AFTER
                 </span>
                 <motion.div
-                  initial={reduceMotion ? undefined : { filter: "blur(16px)" }}
-                  whileInView={reduceMotion ? undefined : { filter: "blur(0px)" }}
+                  initial={reduceMotion ? undefined : { opacity: 0.2, filter: "blur(16px)" }}
+                  whileInView={reduceMotion ? undefined : { opacity: 1, filter: "blur(0px)" }}
                   viewport={{ once: true, amount: 0.2 }}
                   whileHover={
                     reduceMotion
@@ -1340,17 +1340,17 @@ export default function Home() {
         <section id="cta" className="relative overflow-hidden scroll-mt-28 py-28 md:py-32">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[62rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-90"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[38rem] w-[70rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-85 blur-2xl"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(139,92,246,0.26) 0%, rgba(139,92,246,0.14) 34%, rgba(139,92,246,0.06) 52%, rgba(7,7,11,0) 74%)",
+                "radial-gradient(ellipse at center, rgba(139,92,246,0.34) 0%, rgba(139,92,246,0.2) 30%, rgba(139,92,246,0.1) 52%, rgba(139,92,246,0.04) 68%, rgba(7,7,11,0) 100%)",
             }}
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[22rem] w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[26rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-70 blur-xl"
             style={{
-              background: "radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)",
+              background: "radial-gradient(ellipse at center, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0) 100%)",
             }}
           />
           <motion.div

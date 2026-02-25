@@ -33,7 +33,8 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(resendApiKey);
-    const toEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim() || "timothytitenokspam@gmail.com";
+    const fallbackTestingRecipient = "timothytitenokspam@gmail.com";
+    const toEmail = (process.env.LEAD_NOTIFICATION_EMAIL?.trim() || fallbackTestingRecipient).toLowerCase();
     const defaultFromEmail = "onboarding@resend.dev";
     const configuredFromEmail = process.env.RESEND_FROM_EMAIL?.trim() || defaultFromEmail;
 
@@ -75,6 +76,20 @@ export async function POST(request: Request) {
       const retryResult = await resend.emails.send({
         from: defaultFromEmail,
         ...baseEmailPayload,
+      });
+      error = retryResult.error;
+    }
+
+    const testingRecipientRestrictionError =
+      typeof error?.message === "string" &&
+      /only send testing emails to your own email address/i.test(error.message);
+
+    // In testing mode, force delivery to the verified account email.
+    if (error && testingRecipientRestrictionError && toEmail !== fallbackTestingRecipient) {
+      const retryResult = await resend.emails.send({
+        from: defaultFromEmail,
+        ...baseEmailPayload,
+        to: [fallbackTestingRecipient],
       });
       error = retryResult.error;
     }
