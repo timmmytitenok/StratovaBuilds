@@ -17,6 +17,7 @@ type TiltedCardProps = {
   showTooltip?: boolean;
   overlayContent?: ReactNode;
   displayOverlayContent?: boolean;
+  disableTilt?: boolean;
 };
 
 const springValues = {
@@ -38,6 +39,7 @@ export default function TiltedCard({
   showTooltip = false,
   overlayContent = null,
   displayOverlayContent = false,
+  disableTilt = false,
 }: TiltedCardProps) {
   const ref = useRef<HTMLElement | null>(null);
   const x = useMotionValue(0);
@@ -50,7 +52,7 @@ export default function TiltedCard({
   const [lastY, setLastY] = useState(0);
 
   const handleMouseMove = (event: MouseEvent<HTMLElement>) => {
-    if (!ref.current) return;
+    if (disableTilt || !ref.current) return;
 
     const rect = ref.current.getBoundingClientRect();
     const offsetX = event.clientX - rect.left - rect.width / 2;
@@ -69,11 +71,13 @@ export default function TiltedCard({
   };
 
   const handleMouseEnter = () => {
+    if (disableTilt) return;
     scale.set(scaleOnHover);
     opacity.set(1);
   };
 
   const handleMouseLeave = () => {
+    if (disableTilt) return;
     opacity.set(0);
     scale.set(1);
     rotateX.set(0);
@@ -90,7 +94,16 @@ export default function TiltedCard({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <motion.div className={styles.inner} style={{ width: imageWidth, height: imageHeight, rotateX, rotateY, scale }}>
+      <motion.div
+        className={styles.inner}
+        style={{
+          width: imageWidth,
+          height: imageHeight,
+          rotateX: disableTilt ? 0 : rotateX,
+          rotateY: disableTilt ? 0 : rotateY,
+          scale: disableTilt ? 1 : scale,
+        }}
+      >
         <motion.img src={imageSrc} alt={altText} className={styles.img} style={{ width: imageWidth, height: imageHeight }} />
         {displayOverlayContent && overlayContent ? <motion.div className={styles.overlay}>{overlayContent}</motion.div> : null}
       </motion.div>

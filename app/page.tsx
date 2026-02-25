@@ -15,6 +15,7 @@ import {
   Star,
   Zap,
 } from "lucide-react";
+import MobileTouchEffect from "@/components/MobileTouchEffect";
 import TiltedCard from "@/components/TiltedCard";
 import VariableProximity from "@/components/VariableProximity";
 
@@ -590,10 +591,10 @@ export default function Home() {
             >
               <div ref={titleProximityRef} className="relative">
                 <span
-                  className={`${robotoFlex.className} block select-none bg-gradient-to-b from-white via-zinc-100 to-zinc-500 bg-clip-text text-transparent md:hidden`}
+                  className={`${robotoFlex.className} block select-none text-[3.6rem] text-white md:hidden`}
                   style={{
                     textShadow:
-                      "0 1px 0 rgba(255,255,255,0.72), 0 2px 0 rgba(225,225,235,0.48), 0 8px 0 rgba(54,54,72,0.82), 0 18px 34px rgba(0,0,0,0.66)",
+                      "0 1px 0 rgba(255,255,255,0.95), 0 2px 0 rgba(255,255,255,0.9), 0 8px 0 rgba(54,54,72,0.85), 0 18px 34px rgba(0,0,0,0.65)",
                   }}
                 >
                   STRATOVA
@@ -704,7 +705,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        <section id="before-after" className="relative mt-0 scroll-mt-28 pt-2 pb-16 md:mt-20 md:py-28">
+        <section id="before-after" className="relative mt-16 scroll-mt-28 pt-6 pb-16 md:mt-20 md:py-28">
           <motion.div
             variants={sectionStagger}
             initial={reduceMotion ? undefined : "hidden"}
@@ -797,6 +798,7 @@ export default function Home() {
                     scaleOnHover={1.05}
                     showTooltip={false}
                     displayOverlayContent={false}
+                    disableTilt={isMobileViewport}
                   />
                 </motion.div>
                 <p className="text-lg font-medium text-zinc-100">Feels premium. Converts higher.</p>
@@ -1441,6 +1443,8 @@ export default function Home() {
           </motion.div>
         ) : null}
       </AnimatePresence>
+
+      <MobileTouchEffect />
     </div>
   );
 }
