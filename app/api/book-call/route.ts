@@ -12,7 +12,7 @@ type LeadPayload = {
 
 export async function POST(request: Request) {
   try {
-    const resendApiKey = process.env.RESEND_API_KEY || process.env.NEXT_PUBLIC_RESEND_API_KEY;
+    const resendApiKey = process.env.RESEND_API_KEY;
     if (!resendApiKey) {
       return NextResponse.json(
         { error: "Email service is not configured. Set RESEND_API_KEY in your server environment." },
@@ -33,8 +33,8 @@ export async function POST(request: Request) {
     }
 
     const resend = new Resend(resendApiKey);
-    const toEmail = "timothytitenokspam@gmail.com";
-    const fromEmail = "onboarding@resend.dev";
+    const toEmail = process.env.LEAD_NOTIFICATION_EMAIL?.trim() || "timothytitenokspam@gmail.com";
+    const fromEmail = process.env.RESEND_FROM_EMAIL?.trim() || "onboarding@resend.dev";
 
     const { error } = await resend.emails.send({
       from: fromEmail,
