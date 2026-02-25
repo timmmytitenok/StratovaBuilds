@@ -429,12 +429,6 @@ export default function Home() {
   const titleProximityRef = useRef<HTMLDivElement>(null);
   const paragraphProximityRef = useRef<HTMLDivElement>(null);
   const lastScrollYRef = useRef(0);
-  const pricingHeaderStagger = reduceMotion
-    ? undefined
-    : {
-        hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
-        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" as const } },
-      };
   const sectionStagger = reduceMotion
     ? undefined
     : {
@@ -946,28 +940,36 @@ export default function Home() {
 
         <section id="process" className="relative scroll-mt-28 py-24 md:py-28">
           <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0.15, y: 18, filter: "blur(10px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
+            variants={sectionStagger}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
             viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center"
+            className="space-y-8 text-center"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-white/55">THE STRATOVA METHOD</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[0.03em] text-white md:text-5xl">
+            <motion.p variants={sectionItem} className="text-xs uppercase tracking-[0.2em] text-white/55">
+              THE STRATOVA METHOD
+            </motion.p>
+            <motion.h2
+              variants={sectionItem}
+              className="text-3xl font-semibold tracking-[0.03em] text-white md:text-5xl"
+            >
               <span className="md:hidden">
                 <span className="block">Built with intention.</span>
                 <span className="block">Not templates.</span>
               </span>
               <span className="hidden md:inline">Built with intention. Not templates.</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-zinc-300 md:text-lg">
+            </motion.h2>
+            <motion.p
+              variants={sectionItem}
+              className="mx-auto max-w-2xl text-sm leading-relaxed text-zinc-300 md:text-lg"
+            >
               <span className="md:hidden">
                 Stratova build follows a performance-first structure designed around how customers actually shop.
               </span>
               <span className="hidden md:inline">
                 Every Stratova build follows a performance-first structure designed around how customers actually shop.
               </span>
-            </p>
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -1022,23 +1024,31 @@ export default function Home() {
 
         <section id="pricing" className="relative scroll-mt-28 py-24 md:py-28">
           <motion.div
-            variants={pricingHeaderStagger}
+            variants={sectionStagger}
             initial={reduceMotion ? undefined : "hidden"}
             whileInView={reduceMotion ? undefined : "show"}
             viewport={{ once: true, amount: 0.15 }}
-            className="text-center"
+            className="space-y-8 text-center"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-violet-300">INVESTMENT</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-[0.03em] text-white md:text-5xl">
+            <motion.p variants={sectionItem} className="text-xs uppercase tracking-[0.2em] text-violet-300">
+              INVESTMENT
+            </motion.p>
+            <motion.h2
+              variants={sectionItem}
+              className="text-3xl font-semibold tracking-[0.03em] text-white md:text-5xl"
+            >
               <span className="md:hidden">
                 <span className="block">Simple packages.</span>
                 <span className="block">Premium outcomes.</span>
               </span>
               <span className="hidden md:inline">Simple packages. Premium outcomes.</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-zinc-300 md:text-lg">
+            </motion.h2>
+            <motion.p
+              variants={sectionItem}
+              className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-300 md:text-lg"
+            >
               Start with a custom storefront that looks built-not bought. Add revenue systems when you&apos;re ready.
-            </p>
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -1272,23 +1282,31 @@ export default function Home() {
 
         <section id="testimonials" className="relative scroll-mt-28 py-24 md:py-28">
           <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0.15, y: 18, filter: "blur(10px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
+            variants={sectionStagger}
+            initial={reduceMotion ? undefined : "hidden"}
+            whileInView={reduceMotion ? undefined : "show"}
             viewport={{ once: true, amount: 0.16 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="text-center"
+            className="space-y-8 text-center"
           >
-            <p className="text-xs uppercase tracking-[0.2em] text-violet-300/90">RESULTS</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[0.03em] text-white md:text-5xl">
+            <motion.p variants={sectionItem} className="text-xs uppercase tracking-[0.2em] text-violet-300/90">
+              RESULTS
+            </motion.p>
+            <motion.h2
+              variants={sectionItem}
+              className="text-4xl font-semibold tracking-[0.03em] text-white md:text-5xl"
+            >
               <span className="md:hidden">
                 <span className="block">What changes</span>
                 <span className="block">after launch.</span>
               </span>
               <span className="hidden md:inline">What changes after launch.</span>
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl whitespace-nowrap text-xs leading-relaxed text-zinc-300 md:whitespace-normal md:text-lg">
+            </motion.h2>
+            <motion.p
+              variants={sectionItem}
+              className="mx-auto max-w-2xl whitespace-nowrap text-xs leading-relaxed text-zinc-300 md:whitespace-normal md:text-lg"
+            >
               Custom builds don&apos;t just look better. They perform better.
-            </p>
+            </motion.p>
           </motion.div>
 
           <div className="mt-12 grid gap-10 md:grid-cols-3">
