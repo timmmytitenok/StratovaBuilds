@@ -166,7 +166,7 @@ function SectionReveal({
     <motion.div
       initial={reduced ? undefined : { opacity: 0.2, y: 18, filter: "blur(18px)" }}
       whileInView={reduced ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: false, amount: 0.12 }}
+      viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.48, ease: "easeOut", delay }}
       style={reduced ? undefined : { willChange: "opacity, transform, filter" }}
       className={className}
@@ -561,7 +561,7 @@ export default function Home() {
         <motion.section
           initial={reduceMotion ? undefined : { opacity: 0.2, y: 18, filter: "blur(18px)" }}
           whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: false, amount: 0.12 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
           style={reduceMotion ? undefined : { willChange: "opacity, transform, filter" }}
           className="relative flex min-h-[96svh] flex-col items-center justify-start py-8 text-center md:min-h-[calc(100svh-5.5rem)] md:justify-center md:py-14"
@@ -709,7 +709,7 @@ export default function Home() {
             variants={sectionStagger}
             initial={reduceMotion ? undefined : "hidden"}
             whileInView={reduceMotion ? undefined : "show"}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             className="space-y-8"
           >
             <motion.p variants={sectionItem} className="text-center text-xs uppercase tracking-[0.2em] text-violet-300">
@@ -735,7 +735,7 @@ export default function Home() {
             <motion.div
               initial={reduceMotion ? undefined : { y: 14, filter: "blur(16px)" }}
               whileInView={reduceMotion ? undefined : { y: 0, filter: "blur(0px)" }}
-              viewport={{ once: false, amount: 0.14 }}
+              viewport={{ once: true, amount: 0.14 }}
               transition={{ duration: 0.42, ease: "easeOut" }}
               className="grid gap-x-10 gap-y-14 pt-6 md:gap-y-10 lg:grid-cols-2"
             >
@@ -746,7 +746,7 @@ export default function Home() {
                 <motion.div
                   initial={reduceMotion ? undefined : { filter: "blur(16px)" }}
                   whileInView={reduceMotion ? undefined : { filter: "blur(0px)" }}
-                  viewport={{ once: false, amount: 0.2 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.38, ease: "easeOut" }}
                   className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-dashed border-white/20 bg-white/[0.03]"
           >
@@ -776,7 +776,7 @@ export default function Home() {
                 <motion.div
                   initial={reduceMotion ? undefined : { filter: "blur(16px)" }}
                   whileInView={reduceMotion ? undefined : { filter: "blur(0px)" }}
-                  viewport={{ once: false, amount: 0.2 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   whileHover={
                     reduceMotion
                       ? undefined
@@ -947,7 +947,7 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 18, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
           >
@@ -972,7 +972,7 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 20, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.12 }}
+            viewport={{ once: true, amount: 0.12 }}
             transition={reduceMotion ? undefined : { duration: 0.55, ease: "easeOut", delay: 0.08 }}
             className="mt-14 grid gap-x-12 gap-y-12 md:grid-cols-2"
           >
@@ -1006,7 +1006,7 @@ export default function Home() {
                 key={item.step}
                 initial={reduceMotion ? undefined : { opacity: 0.15, y: 22, filter: "blur(10px)" }}
                 whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: false, amount: 0.16 }}
+                viewport={{ once: true, amount: 0.16 }}
                 transition={reduceMotion ? undefined : { duration: 0.45, ease: "easeOut", delay: 0.12 + index * 0.08 }}
                 className="text-left"
               >
@@ -1024,7 +1024,7 @@ export default function Home() {
             variants={pricingHeaderStagger}
             initial={reduceMotion ? undefined : "hidden"}
             whileInView={reduceMotion ? undefined : "show"}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             className="text-center"
           >
             <p className="text-xs uppercase tracking-[0.2em] text-violet-300">INVESTMENT</p>
@@ -1043,7 +1043,7 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 16, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.16 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{ duration: 0.35, delay: reduceMotion ? 0 : 0.08 }}
             className="mt-10 flex justify-center"
           >
@@ -1068,7 +1068,7 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 20, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.14 }}
+            viewport={{ once: true, amount: 0.14 }}
             transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.14 }}
             className="mt-12 grid gap-10 lg:grid-cols-2"
           >
@@ -1200,7 +1200,7 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 20, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.15 }}
+            viewport={{ once: true, amount: 0.15 }}
             transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.22 }}
             className="mt-10 rounded-2xl border border-violet-400/35 p-6 shadow-[0_0_40px_rgba(139,92,246,0.13)] md:p-7"
           >
@@ -1256,7 +1256,7 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, filter: "blur(8px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.18 }}
+            viewport={{ once: true, amount: 0.18 }}
             transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.28 }}
             className="mt-10"
           >
@@ -1273,12 +1273,18 @@ export default function Home() {
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 18, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.16 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
           >
             <p className="text-xs uppercase tracking-[0.2em] text-violet-300/90">RESULTS</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[0.03em] text-white md:text-5xl">What changes after launch.</h2>
+            <h2 className="mt-3 text-4xl font-semibold tracking-[0.03em] text-white md:text-5xl">
+              <span className="md:hidden">
+                <span className="block">What changes</span>
+                <span className="block">after launch.</span>
+              </span>
+              <span className="hidden md:inline">What changes after launch.</span>
+            </h2>
             <p className="mx-auto mt-4 max-w-2xl whitespace-nowrap text-xs leading-relaxed text-zinc-300 md:whitespace-normal md:text-lg">
               Custom builds don&apos;t just look better. They perform better.
             </p>
@@ -1308,7 +1314,7 @@ export default function Home() {
                 key={item.metric}
                 initial={reduceMotion ? undefined : { opacity: 0.15, y: 20, filter: "blur(10px)" }}
                 whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-                viewport={{ once: false, amount: 0.16 }}
+                viewport={{ once: true, amount: 0.16 }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: reduceMotion ? 0 : index * 0.08 + 0.08 }}
                 whileHover={reduceMotion ? undefined : { y: -3, boxShadow: "0 0 26px rgba(139,92,246,0.14)" }}
                 className="border-t border-white/12 pt-5 text-left"
@@ -1323,7 +1329,7 @@ export default function Home() {
           <motion.p
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 10, filter: "blur(8px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.18 }}
+            viewport={{ once: true, amount: 0.18 }}
             transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.26 }}
             className="mt-10 text-center text-xs text-zinc-500"
           >
@@ -1331,19 +1337,26 @@ export default function Home() {
           </motion.p>
         </section>
 
-        <section id="cta" className="relative scroll-mt-28 py-28 md:py-32">
+        <section id="cta" className="relative overflow-hidden scroll-mt-28 py-28 md:py-32">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[52rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-violet-500/12 blur-[120px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[34rem] w-[62rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-90"
+            style={{
+              background:
+                "radial-gradient(ellipse at center, rgba(139,92,246,0.26) 0%, rgba(139,92,246,0.14) 34%, rgba(139,92,246,0.06) 52%, rgba(7,7,11,0) 74%)",
+            }}
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[18rem] w-[40rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/[0.04] blur-[110px]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[22rem] w-[46rem] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-80"
+            style={{
+              background: "radial-gradient(ellipse at center, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%)",
+            }}
           />
           <motion.div
             initial={reduceMotion ? undefined : { opacity: 0.15, y: 18, filter: "blur(10px)" }}
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: false, amount: 0.16 }}
+            viewport={{ once: true, amount: 0.16 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="relative text-center"
           >
