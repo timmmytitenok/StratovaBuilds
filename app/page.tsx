@@ -432,8 +432,8 @@ export default function Home() {
   const pricingHeaderStagger = reduceMotion
     ? undefined
     : {
-        hidden: { opacity: 0, y: 18 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+        hidden: { opacity: 0, y: 18, filter: "blur(10px)" },
+        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: "easeOut" as const } },
       };
   const sectionStagger = reduceMotion
     ? undefined
@@ -448,8 +448,8 @@ export default function Home() {
   const sectionItem = reduceMotion
     ? undefined
     : {
-        hidden: { opacity: 0.15, y: 20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" as const } },
+        hidden: { opacity: 0.15, y: 20, filter: "blur(10px)" },
+        show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.45, ease: "easeOut" as const } },
       };
 
   useEffect(() => {
@@ -704,7 +704,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        <section id="before-after" className="relative mt-24 scroll-mt-28 pt-6 pb-16 md:mt-20 md:py-28">
+        <section id="before-after" className="relative mt-32 scroll-mt-28 pt-6 pb-16 md:mt-20 md:py-28">
           <motion.div
             variants={sectionStagger}
             initial={reduceMotion ? undefined : "hidden"}
