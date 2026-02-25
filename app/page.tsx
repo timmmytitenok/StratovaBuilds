@@ -15,7 +15,6 @@ import {
   Star,
   Zap,
 } from "lucide-react";
-import MobileTouchEffect from "@/components/MobileTouchEffect";
 import TiltedCard from "@/components/TiltedCard";
 import VariableProximity from "@/components/VariableProximity";
 
@@ -705,7 +704,7 @@ export default function Home() {
           </div>
         </motion.section>
 
-        <section id="before-after" className="relative mt-16 scroll-mt-28 pt-6 pb-16 md:mt-20 md:py-28">
+        <section id="before-after" className="relative mt-24 scroll-mt-28 pt-6 pb-16 md:mt-20 md:py-28">
           <motion.div
             variants={sectionStagger}
             initial={reduceMotion ? undefined : "hidden"}
@@ -1443,8 +1442,6 @@ export default function Home() {
           </motion.div>
         ) : null}
       </AnimatePresence>
-
-      <MobileTouchEffect />
     </div>
   );
 }
