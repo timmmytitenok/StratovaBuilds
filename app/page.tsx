@@ -1090,7 +1090,7 @@ export default function Home() {
             >
               <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Core Build</p>
               <h3 className="mt-2 text-2xl font-semibold text-white">Custom Shopify Build</h3>
-              <p className="mt-3 text-3xl font-semibold text-violet-200">Starting at $1499</p>
+              <p className="mt-3 text-3xl font-semibold text-violet-200">Starting at $999</p>
               <p className="mt-2 text-sm text-zinc-400">+ $29/mo server running cost</p>
 
               <ul className="mt-6 space-y-2.5 text-sm text-zinc-300">
@@ -1138,8 +1138,11 @@ export default function Home() {
 
               <div className="mt-6 space-y-6">
                 <div>
-                  <div className="flex flex-wrap items-baseline justify-between gap-3">
-                    <h4 className="text-lg font-semibold text-white">AI Abandoned Cart Recovery</h4>
+                  <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3 md:flex md:flex-wrap md:justify-between">
+                    <h4 className="text-lg font-semibold text-white">
+                      <span className="md:hidden">Lost Cart Recovery</span>
+                      <span className="hidden md:inline">Abandoned Cart Recovery</span>
+                    </h4>
                     <AnimatePresence mode="wait">
                       <motion.p
                         key={`abandoned-${billingMode}`}
@@ -1149,14 +1152,14 @@ export default function Home() {
                         transition={{ duration: 0.2 }}
                         className="text-lg font-semibold text-violet-200"
                       >
-                        {billingMode === "monthly" ? "$179/mo" : "$1299"}
+                        {billingMode === "monthly" ? "$29/mo" : "$219"}
                       </motion.p>
                     </AnimatePresence>
                   </div>
                   <ul className="mt-3 space-y-2 text-sm text-zinc-300">
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      Recover lost checkouts with smart follow-ups
+                      Lost checkouts with smart follow-ups
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
@@ -1172,7 +1175,7 @@ export default function Home() {
                 <div className="h-px w-full bg-gradient-to-r from-white/20 via-white/10 to-transparent" />
 
                 <div>
-                  <div className="flex flex-wrap items-baseline justify-between gap-3">
+                  <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3 md:flex md:flex-wrap md:justify-between">
                     <h4 className="text-lg font-semibold text-white">AI Live Chat Bot</h4>
                     <AnimatePresence mode="wait">
                       <motion.p
@@ -1183,7 +1186,7 @@ export default function Home() {
                         transition={{ duration: 0.2 }}
                         className="text-lg font-semibold text-violet-200"
                       >
-                        {billingMode === "monthly" ? "$99/mo" : "$699"}
+                        {billingMode === "monthly" ? "$24/mo" : "$179"}
                       </motion.p>
                     </AnimatePresence>
                   </div>
@@ -1221,7 +1224,10 @@ export default function Home() {
                 Most Popular
               </span>
             </div>
-            <p className="mt-2 text-zinc-300">The full upgrade: custom storefront + both add-ons.</p>
+            <p className="mt-2 text-zinc-300">
+              <span className="md:hidden">The full upgrade: <br />custom storefront + both add-ons.</span>
+              <span className="hidden md:inline">The full upgrade: custom storefront + both add-ons.</span>
+            </p>
 
             <AnimatePresence mode="wait">
               <motion.div
@@ -1233,7 +1239,12 @@ export default function Home() {
                 className="mt-5"
               >
                 <p className="text-3xl font-semibold text-violet-200">
-                  {billingMode === "monthly" ? "From $1499 + $278/mo" : "$1499 + $1998 one-time"}
+                  {billingMode === "monthly" ? "$999 + $49/mo" : (
+                  <>
+                    <span className="md:hidden">$999 + $299</span>
+                    <span className="hidden md:inline">$999 + $299 one-time</span>
+                  </>
+                )}
                 </p>
                 <p className="mt-1 text-sm text-zinc-400">+ $29/mo server</p>
               </motion.div>
