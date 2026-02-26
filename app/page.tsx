@@ -18,8 +18,6 @@ import {
 import TiltedCard from "@/components/TiltedCard";
 import VariableProximity from "@/components/VariableProximity";
 
-type BillingMode = "monthly" | "one-time";
-
 type FormValues = {
   fullName: string;
   phoneNumber: string;
@@ -422,7 +420,6 @@ function Field({
 
 export default function Home() {
   const [isFormModalOpen, setIsFormModalOpen] = useState(false);
-  const [billingMode, setBillingMode] = useState<BillingMode>("monthly");
   const [isHeaderVisible, setIsHeaderVisible] = useState(true);
   const [isMobileViewport, setIsMobileViewport] = useState(false);
   const reduceMotion = useReducedMotion();
@@ -1022,58 +1019,31 @@ export default function Home() {
           </motion.div>
         </section>
 
-        <section id="pricing" className="relative scroll-mt-28 py-24 md:py-28">
+        <section id="pricing" className="relative scroll-mt-28 py-28 md:py-36">
           <motion.div
             variants={sectionStagger}
             initial={reduceMotion ? undefined : "hidden"}
             whileInView={reduceMotion ? undefined : "show"}
             viewport={{ once: true, amount: 0.15 }}
-            className="space-y-8 text-center"
+            className="space-y-6 text-center md:space-y-8"
           >
-            <motion.p variants={sectionItem} className="text-xs uppercase tracking-[0.2em] text-violet-300">
+            <motion.p variants={sectionItem} className="text-xs uppercase tracking-[0.2em] text-white/50">
               INVESTMENT
             </motion.p>
             <motion.h2
               variants={sectionItem}
-              className="text-3xl font-semibold tracking-[0.03em] text-white md:text-5xl"
+              className="text-5xl font-semibold tracking-[0.03em] text-white md:text-5xl"
             >
-              <span className="md:hidden">
-                <span className="block">Simple packages.</span>
-                <span className="block">Premium outcomes.</span>
-              </span>
-              <span className="hidden md:inline">Simple packages. Premium outcomes.</span>
+              <span className="md:hidden">Stratova Custom Build</span>
+              <span className="hidden md:inline">The Stratova Custom Build</span>
             </motion.h2>
             <motion.p
               variants={sectionItem}
-              className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-300 md:text-lg"
+              className="mx-auto max-w-2xl text-base leading-relaxed text-zinc-400 md:text-lg"
             >
-              Start with a custom storefront that looks built-not bought. Add revenue systems when you&apos;re ready.
+              <span className="md:hidden">For clothing brands ready to convert.</span>
+              <span className="hidden md:inline">For clothing brands ready to look premium and convert.</span>
             </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0.15, y: 16, filter: "blur(10px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.16 }}
-            transition={{ duration: 0.35, delay: reduceMotion ? 0 : 0.08 }}
-            className="mt-10 flex justify-center"
-          >
-            <div className="inline-flex rounded-2xl border border-white/15 bg-black/35 p-1">
-              {(["monthly", "one-time"] as BillingMode[]).map((mode) => (
-                <button
-                  key={mode}
-                  type="button"
-                  onClick={() => setBillingMode(mode)}
-                  className={cn(
-                    "rounded-xl px-5 py-2.5 text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400",
-                    billingMode === mode ? "bg-violet-500 text-white" : "text-zinc-300 hover:text-white",
-                  )}
-                  aria-pressed={billingMode === mode}
-                >
-                  {mode === "monthly" ? "Monthly" : "One-Time"}
-                </button>
-              ))}
-            </div>
           </motion.div>
 
           <motion.div
@@ -1081,213 +1051,58 @@ export default function Home() {
             whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.14 }}
             transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.14 }}
-            className="mt-12 grid gap-10 lg:grid-cols-2"
+            className="mx-auto mt-10 flex justify-center md:mt-20"
           >
             <motion.div
               whileHover={reduceMotion ? undefined : { y: -3, boxShadow: "0 0 26px rgba(139,92,246,0.15)" }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="rounded-2xl border border-white/10 p-6 md:p-7"
+              className="w-full max-w-2xl rounded-2xl border border-white/10 px-5 pt-8 pb-5 md:px-14 md:pt-16 md:pb-8"
             >
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Core Build</p>
-              <h3 className="mt-2 text-2xl font-semibold text-white">Custom Shopify Build</h3>
-              <p className="mt-3 text-3xl font-semibold text-violet-200">Starting at $999</p>
-              <p className="mt-2 text-sm text-zinc-400">+ $29/mo server running cost</p>
+              <p className="text-center text-[10px] font-light tracking-[0.18em] text-white/90 md:text-xs md:tracking-[0.2em]">
+                Custom Shopify. Built to Convert.
+              </p>
+              <p className="mt-3 text-center text-3xl font-semibold tracking-tight text-white md:mt-5 md:text-5xl">
+                Starting at $999
+              </p>
 
-              <ul className="mt-6 space-y-2.5 text-sm text-zinc-300">
+              <ul className="mt-10 space-y-3 text-xs text-zinc-300 md:mt-20 md:space-y-4 md:text-sm">
                 {[
-                  "Custom sections + brand-first layout",
-                  "Mobile-first design (where most sales happen)",
-                  "Performance-focused build for speed",
-                  "Conversion-optimized structure",
-                  "Launch-ready handoff",
+                  "Brand-first custom layout (not a template)",
+                  "Mobile-first structure (where most sales happen)",
+                  "Conversion-focused product architecture",
+                  "Performance-optimized build for speed",
+                  "Launch-ready delivery + guided handoff",
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2">
+                  <li key={item} className="flex items-start gap-3">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="mt-7 flex flex-wrap items-center gap-3">
+              <p className="mt-5 text-sm text-zinc-500 md:mt-8">Limited client spots each month.</p>
+
+              <div className="mt-8 flex flex-col items-stretch gap-3 sm:flex-row sm:justify-center sm:gap-4 md:mt-12">
                 <motion.button
                   type="button"
                   onClick={() => setIsFormModalOpen(true)}
                   whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01, boxShadow: "0px 12px 32px rgba(139,92,246,0.35)" }}
                   whileTap={reduceMotion ? undefined : { scale: 0.96, y: 0 }}
                   transition={{ type: "tween", duration: 0.16, ease: "easeOut" }}
-                  className="inline-flex items-center gap-2 rounded-xl bg-violet-500 px-5 py-2.5 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-violet-500 px-6 py-3.5 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 md:px-7 md:py-4 md:text-base"
                 >
-                  Book a Call
+                  Book a Strategy Call
                 </motion.button>
                 <a
                   href="#before-after"
-                  className="inline-flex items-center gap-2 rounded-xl border border-white/15 px-5 py-2.5 text-sm font-semibold text-zinc-200 transition hover:border-violet-400/55 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-semibold text-zinc-200 transition hover:border-violet-400/55 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 md:px-7 md:py-4 md:text-base"
                 >
-                  See Before &amp; After
-          </a>
-        </div>
-            </motion.div>
-
-            <motion.div
-              whileHover={reduceMotion ? undefined : { y: -3, boxShadow: "0 0 26px rgba(139,92,246,0.14)" }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="rounded-2xl border border-white/10 p-6 md:p-7"
-            >
-              <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Add-ons</p>
-              <h3 className="mt-2 text-2xl font-semibold text-white">Revenue Add-ons</h3>
-
-              <div className="mt-6 space-y-6">
-                <div>
-                  <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3 md:flex md:flex-wrap md:justify-between">
-                    <h4 className="text-lg font-semibold text-white">
-                      <span className="md:hidden">Lost Cart Recovery</span>
-                      <span className="hidden md:inline">Abandoned Cart Recovery</span>
-                    </h4>
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={`abandoned-${billingMode}`}
-                        initial={reduceMotion ? undefined : { opacity: 0, y: 6 }}
-                        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                        exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
-                        transition={{ duration: 0.2 }}
-                        className="text-lg font-semibold text-violet-200"
-                      >
-                        {billingMode === "monthly" ? "$29/mo" : "$219"}
-                      </motion.p>
-                    </AnimatePresence>
-                  </div>
-                  <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      Lost checkouts with smart follow-ups
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      On-brand messaging + timing
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      Discount logic when needed (not always)
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="h-px w-full bg-gradient-to-r from-white/20 via-white/10 to-transparent" />
-
-                <div>
-                  <div className="grid grid-cols-[1fr_auto] items-baseline gap-x-3 md:flex md:flex-wrap md:justify-between">
-                    <h4 className="text-lg font-semibold text-white">AI Live Chat Bot</h4>
-                    <AnimatePresence mode="wait">
-                      <motion.p
-                        key={`chat-${billingMode}`}
-                        initial={reduceMotion ? undefined : { opacity: 0, y: 6 }}
-                        animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                        exit={reduceMotion ? undefined : { opacity: 0, y: -6 }}
-                        transition={{ duration: 0.2 }}
-                        className="text-lg font-semibold text-violet-200"
-                      >
-                        {billingMode === "monthly" ? "$24/mo" : "$179"}
-                      </motion.p>
-                    </AnimatePresence>
-                  </div>
-                  <ul className="mt-3 space-y-2 text-sm text-zinc-300">
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      Answers questions instantly
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      Guides customers to the right product
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                      Reduces friction before checkout
-                    </li>
-                  </ul>
-                </div>
+                  View Before &amp; After
+                </a>
               </div>
 
-              <p className="mt-6 text-xs text-zinc-400">Add-ons can be installed after launch.</p>
+              <p className="mt-6 text-center text-xs text-zinc-500 md:mt-8">*Shopify subscription required.</p>
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0.15, y: 20, filter: "blur(10px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.15 }}
-            transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.22 }}
-            className="mt-10 rounded-2xl border border-violet-400/35 p-6 shadow-[0_0_40px_rgba(139,92,246,0.13)] md:p-7"
-          >
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h3 className="text-2xl font-semibold text-white">Stratova Growth Stack</h3>
-              <span className="rounded-full border border-violet-300/45 bg-violet-500/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-violet-200">
-                Most Popular
-              </span>
-            </div>
-            <p className="mt-2 text-zinc-300">
-              <span className="md:hidden">The full upgrade: <br />custom storefront + both add-ons.</span>
-              <span className="hidden md:inline">The full upgrade: custom storefront + both add-ons.</span>
-            </p>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`bundle-${billingMode}`}
-                initial={reduceMotion ? undefined : { opacity: 0, y: 8 }}
-                animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
-                transition={{ duration: 0.2 }}
-                className="mt-5"
-              >
-                <p className="text-3xl font-semibold text-violet-200">
-                  {billingMode === "monthly" ? "$999 + $49/mo" : (
-                  <>
-                    <span className="md:hidden">$999 + $299</span>
-                    <span className="hidden md:inline">$999 + $299 one-time</span>
-                  </>
-                )}
-                </p>
-                <p className="mt-1 text-sm text-zinc-400">+ $29/mo server</p>
-              </motion.div>
-            </AnimatePresence>
-
-            <ul className="mt-6 grid gap-2 text-sm text-zinc-300 md:grid-cols-3 md:gap-3">
-              {[
-                "Custom build that doesn't look templated",
-                "Revenue systems layered in after launch",
-                "One team, one roadmap",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-violet-300" aria-hidden="true" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-
-            <motion.button
-              type="button"
-              onClick={() => setIsFormModalOpen(true)}
-              whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01, boxShadow: "0px 12px 32px rgba(139,92,246,0.35)" }}
-              whileTap={reduceMotion ? undefined : { scale: 0.96, y: 0 }}
-              transition={{ type: "tween", duration: 0.16, ease: "easeOut" }}
-              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-violet-500 px-5 py-2.5 text-sm font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
-            >
-              Get the Growth Stack
-            </motion.button>
-          </motion.div>
-
-          <motion.div
-            initial={reduceMotion ? undefined : { opacity: 0.15, filter: "blur(8px)" }}
-            whileInView={reduceMotion ? undefined : { opacity: 1, filter: "blur(0px)" }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.28 }}
-            className="mt-10"
-          >
-            <div className="h-px w-full bg-gradient-to-r from-transparent via-white/20 to-transparent" />
-            <div className="mt-5 flex flex-col items-center gap-2 text-xs text-zinc-400 md:flex-row md:justify-center md:gap-6">
-              <span>No long-term contract required.</span>
-              <span>You own your store. We build it to last.</span>
-              <span>Limited builds per month to keep quality high.</span>
-            </div>
           </motion.div>
         </section>
 
