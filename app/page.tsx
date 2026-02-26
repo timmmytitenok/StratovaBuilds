@@ -660,8 +660,9 @@ export default function Home() {
               >
                 Book a Call <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </motion.button>
-              <motion.a
-                href="#pricing"
+              <motion.button
+                type="button"
+                onClick={() => scrollToSection("pricing")}
                 whileHover={
                   reduceMotion
                     ? undefined
@@ -673,7 +674,7 @@ export default function Home() {
                 style={{ willChange: "transform, box-shadow, border-color" }}
               >
                 See Pricing <ChevronDown className="h-4 w-4" aria-hidden="true" />
-              </motion.a>
+              </motion.button>
             </motion.div>
             <div className="mt-12 flex flex-wrap justify-center gap-2.5 md:mt-8">
               {trustPills.map((pill, index) => (
@@ -910,15 +911,16 @@ export default function Home() {
 
             <SectionReveal reduced={Boolean(reduceMotion)} delay={0.12}>
               <div className="flex w-full max-w-sm flex-col items-stretch justify-center gap-3 pt-4 md:max-w-none md:flex-row md:items-center">
-                <motion.a
-                  href="#pricing"
+                <motion.button
+                  type="button"
+                  onClick={() => scrollToSection("pricing")}
                   whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01, boxShadow: "0px 12px 32px rgba(139,92,246,0.35)" }}
                   whileTap={reduceMotion ? undefined : { scale: 0.96, y: 0 }}
                   transition={{ type: "tween", duration: 0.16, ease: "easeOut" }}
                   className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-violet-500 px-7 py-3 text-base font-semibold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 md:w-auto"
                 >
                   See Packages <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </motion.a>
+                </motion.button>
                 <motion.button
                   type="button"
                   onClick={() => setIsFormModalOpen(true)}
@@ -1093,12 +1095,13 @@ export default function Home() {
                 >
                   Book a Strategy Call
                 </motion.button>
-                <a
-                  href="#before-after"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("before-after")}
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3.5 text-sm font-semibold text-zinc-200 transition hover:border-violet-400/55 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 md:px-7 md:py-4 md:text-base"
                 >
                   View Before &amp; After
-                </a>
+                </button>
               </div>
 
               <p className="mt-6 text-center text-xs text-zinc-500 md:mt-8">*Shopify subscription required.</p>
@@ -1218,15 +1221,16 @@ export default function Home() {
               >
                 Book a Call
               </motion.button>
-              <motion.a
-                href="#pricing"
+              <motion.button
+                type="button"
+                onClick={() => scrollToSection("pricing")}
                 whileHover={reduceMotion ? undefined : { y: -3, scale: 1.01, boxShadow: "0px 10px 26px rgba(139,92,246,0.22)" }}
                 whileTap={reduceMotion ? undefined : { scale: 0.96, y: 0 }}
                 transition={{ type: "tween", duration: 0.16, ease: "easeOut" }}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/15 px-6 py-3 text-sm font-semibold text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-300 md:w-auto"
               >
                 See Packages
-              </motion.a>
+              </motion.button>
             </div>
 
             <p className="mt-5 text-xs text-zinc-500">Limited builds per month to keep quality high.</p>
